@@ -1,0 +1,8 @@
+/* @layer components { */
+    .btn-primary {
+        @apply rounded-md bg-indigo-600 px-6 py-2 font-semibold text-white shadow-sm;
+        @apply hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2;
+        @apply focus-visible:outline-offset-2 focus-visible:outline-indigo-600;
+    }
+/* } */
+
