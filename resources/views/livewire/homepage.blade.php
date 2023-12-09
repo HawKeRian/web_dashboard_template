@@ -17,7 +17,7 @@
                     Use PHP as server-side and process back-end methods.
                 </p>
                 <div class="mt-10 flex items-center justify-center gap-x-6">
-                    <a href="#" class="btn-primary">Get started to browse my page!</a>
+                    <a href="#" class="btn-primary" wire:click='login'>Get started to browse my page!</a>
                 </div>
             </div>
         </div>

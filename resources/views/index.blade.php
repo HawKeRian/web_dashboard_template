@@ -10,6 +10,7 @@
 </head>
 <body>
     @livewireScripts
+    @livewire('wire-elements-modal')
     
     @livewire('homepage')
 </body>

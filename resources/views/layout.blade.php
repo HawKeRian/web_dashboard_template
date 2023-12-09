@@ -10,7 +10,9 @@
 </head>
 <body>
     @livewireScripts
+    @livewire('wire-elements-modal')
 
     @yield('content')
+    
 </body>
 </html>
