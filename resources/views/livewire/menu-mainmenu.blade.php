@@ -33,7 +33,7 @@
           </a>
         </div>
       </div>
-
+      
       <!-- Content -->
       <div class="flex-1 px-2 sm:px-0">
         <div class="flex justify-between items-center">
