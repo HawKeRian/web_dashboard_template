@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
     @livewireStyles
 </head>
-<body>
+<body class="w-screen p-0 m-0 h-screen">
     @livewireScripts
     @livewire('wire-elements-modal')
 
