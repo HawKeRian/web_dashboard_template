@@ -11,7 +11,7 @@
             </svg>            
         </a>
 
-        <a class="nav-item datatable-menu smooth-hover" href="#" data-tooltip-target="datatable-menu-tooltip" data-tooltip-style="light" data-tooltip-placement="right">
+        <a class="nav-item datatable-menu smooth-hover" href="{{route('datatable')}}" data-tooltip-target="datatable-menu-tooltip" data-tooltip-style="light" data-tooltip-placement="right">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                 <path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875
                 1.875H3.375A1.875 1.875 0 011.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375

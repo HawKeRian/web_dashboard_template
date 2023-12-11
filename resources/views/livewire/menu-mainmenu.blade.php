@@ -5,7 +5,7 @@
     {{-- Content --}}
     <div class="flex-auto py-4 h-screen">
       <div class="flex justify-between items-center">
-          <h3 class="text-3xl font-extrabold text-white/75 uppercase">Significant Card</h3>
+          <h3 class="text-3xl font-extrabold dark:text-white/75 uppercase">Significant Card</h3>
           {{-- <div class="inline-flex items-center space-x-2"> 
               <a class="bg-gray-900 text-white/50 p-2 rounded-md hover:text-white smooth-hover" href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -22,14 +22,15 @@
 
       <div class="significant-menu">
         @foreach ($signifi_data as $item)
-          <a href="#" class="signifi-item relative group hover:smooth-hover hover:bg-gray-700">
+          <a href="#" class="signifi-item relative group dark:border-gray-900 dark:border-gray-700 border-2 border-gray-300
+                              hover:smooth-hover hover:text-white/50 hover:bg-gray-700 hover:border-gray-900/80">
             <img class="w-20 h-20 object-cover object-center rounded-full" src="{{$item['thumbnail']}}" alt="{{$item["title"]}}" />
-            <h5 class="text-white text-xl font-bold capitalize">{{$item["title"]}}</h5>
-            <p class="text-white/50">Brand: {{$item["brand"]}}</p>
-            <p class="text-white/50">Price: ${{$item["price"]}}</p>
-            <p class="text-white/50 text-sm text-light text-center">{{$item["description"]}}</p>
+            <h5 class="dark:text-white text-xl font-bold capitalize">{{$item["title"]}}</h5>
+            <p class="dark:text-white/50">Brand: {{$item["brand"]}}</p>
+            <p class="dark:text-white/50">Price: ${{$item["price"]}}</p>
+            <p class="dark:text-white/50 text-sm text-light text-center">{{$item["description"]}}</p>
 
-            <p class="absolute top-2 text-white/20 inline-flex items-center text-xs">
+            <p class="absolute top-2 dark:text-white/20 inline-flex items-center text-xs">
               Discount: {{$item["discountPercentage"]}}%
               @if ($item["discountPercentage"] > 10)
                 <span class="ml-2 w-2 h-2 block bg-green-500 rounded group-hover:animate-pulse"></span>
