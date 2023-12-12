@@ -12,6 +12,8 @@
 </head>
 <body class="w-screen p-0 m-0 h-screen">
     @livewireScripts
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <x-livewire-alert::scripts />
     @livewire('wire-elements-modal')
 
     @yield('content')

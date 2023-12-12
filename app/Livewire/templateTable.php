@@ -4,6 +4,8 @@ namespace App\Livewire;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Http;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Footer;
@@ -17,13 +19,8 @@ final class templateTable extends PowerGridComponent
 {
     public function datasource(): ?Collection
     {
-        return collect([
-            ['id' => 1, 'name' => 'Name 1', 'price' => 1.58, 'created_at' => now(),],
-            ['id' => 2, 'name' => 'Name 2', 'price' => 1.68, 'created_at' => now(),],
-            ['id' => 3, 'name' => 'Name 3', 'price' => 1.78, 'created_at' => now(),],
-            ['id' => 4, 'name' => 'Name 4', 'price' => 1.88, 'created_at' => now(),],
-            ['id' => 5, 'name' => 'Name 5', 'price' => 1.98, 'created_at' => now(),],
-        ]);
+        $raw_data = json_decode(Http::get('https://dummyjson.com/products'), true)["products"];
+        return collect($raw_data);
     }
 
     public function setUp(): array
@@ -34,7 +31,7 @@ final class templateTable extends PowerGridComponent
             // Exportable::make('export')
             //     ->striped()
             //     ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
-            Header::make()->showSearchInput()->showToggleColumns(),
+            Header::make()->showSearchInput()->showToggleColumns()->includeViewOnTop('components.datatable.header-top'),
             Footer::make()
                 ->showPerPage()
                 ->showRecordCount(),
@@ -45,11 +42,15 @@ final class templateTable extends PowerGridComponent
     {
         return PowerGrid::columns()
             ->addColumn('id')
-            ->addColumn('name')
+            ->addColumn('title')
             ->addColumn('price')
-            ->addColumn('created_at_formatted', function ($entry) {
-                return Carbon::parse($entry->created_at)->format('d/m/Y');
-            });
+            ->addColumn('brand')
+            ->addColumn('category')
+            ->addColumn('rating')
+            // ->addColumn('created_at_formatted', function ($entry) {
+            //     return Carbon::parse($entry->created_at)->format('d/m/Y');
+            // })
+            ;
     }
 
     public function columns(): array
@@ -59,16 +60,56 @@ final class templateTable extends PowerGridComponent
                 ->searchable()
                 ->sortable(),
 
-            Column::make('Name', 'name')
+            Column::make('Product Name', 'title')
                 ->searchable()
                 ->sortable(),
 
             Column::make('Price', 'price')
+                ->searchable()
                 ->sortable(),
 
-            Column::make('Created', 'created_at_formatted'),
+            Column::make('Brand', 'brand')
+                ->searchable()
+                ->sortable(),
+
+            Column::make('Category', 'category')
+                ->searchable()
+                ->sortable(),
+
+            Column::make('Rating', 'rating')
+                ->searchable()
+                ->sortable(),
+
+            // Column::make('Created', 'created_at_formatted'),
 
             Column::action('Action')
+        ];
+    }
+
+
+    public function header(): array
+    {
+        return [
+            Button::add('add-data')
+                    ->render(function () {
+                        // Wire:click to function inside templateTable :::: wire:click="add_data"
+                        return Blade::render(<<<HTML
+                            <button class=" btn-dark" wire:click="add_data"
+                                    data-tooltip-target="add-data-tooltip" data-tooltip-style="light" data-tooltip-placement="top">
+                                <div class="flex">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 w-5 h-5 text-pg-primary-500 dark:text-pg-primary-300">
+                                        <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </button>
+
+                            <div id="add-data-tooltip" role="tooltip" class="absolute z-10 inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm tooltip opacity-0 invisible" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(213.6px, -630.4px, 0px);" data-popper-placement="top">
+                                Insert Data
+                                <div class="tooltip-arrow" data-popper-arrow="" style="position: absolute; left: 0px; transform: translate3d(56px, 0px, 0px);"></div>
+                            </div>
+                        HTML);
+                    }),
+                    // ->openModal('add_data', []),
         ];
     }
 
@@ -76,6 +117,19 @@ final class templateTable extends PowerGridComponent
     public function actions($row): array
     {
         return [
+            Button::add('view-data')  
+                ->slot('
+                <div class="flex items-center dark:hover:bg-red-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 me-2">
+                        <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z" clip-rule="evenodd" />
+                    </svg>
+                    <p class="p-0 m-0">View</p>
+                </div>
+                ')
+                ->class('mx-1 btn-primary')
+                ->dispatch('view_data', ['product_id' => $row["id"]]),
+
+
             Button::add('edit-data')  
                 ->slot('
                 <div class="flex items-center dark:hover:bg-red-500">
@@ -85,8 +139,8 @@ final class templateTable extends PowerGridComponent
                     <p class="p-0 m-0">Edit</p>
                 </div>
                 ')
-                ->class('mx-1 btn-primary')
-                ->dispatch('edit_data', ['item_id' => $row["id"]]),
+                ->class('mx-1 btn-warning')
+                ->dispatch('edit_data', ['product_id' => $row["id"]]),
 
             Button::add('delete-data')  
                 ->slot('
@@ -98,7 +152,12 @@ final class templateTable extends PowerGridComponent
                 </div>
                 ')
                 ->class('mx-1 btn-danger')
-                ->dispatch('delete_data', ['item_id' => $row["id"]]),
+                ->dispatch('delete_data', ['product_id' => $row["id"]]),
         ];
+    }
+
+    // Dispatch to MenuDatatable sd
+    public function add_data(){
+        $this->dispatch('add_data', []);
     }
 }

@@ -1,32 +1,36 @@
 .btn-primary {
-    @apply rounded-md bg-indigo-600 px-4 py-2 font-semibold dark:text-white shadow-sm;
+    @apply rounded-md bg-indigo-600 px-4 py-2 font-semibold text-white shadow-sm;
     @apply hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 hover:text-indigo-900;
     @apply focus-visible:outline-offset-2 focus-visible:outline-indigo-600;
 }
 
 .btn-danger {
-    @apply rounded-md bg-red-600 px-4 py-2 font-semibold dark:text-white shadow-sm;
+    @apply rounded-md bg-red-600 px-4 py-2 font-semibold text-white shadow-sm;
     @apply hover:bg-red-400 focus-visible:outline focus-visible:outline-2 hover:text-red-900;
     @apply focus-visible:outline-offset-2 focus-visible:outline-red-600;
 }
 
 .btn-success {
-    @apply rounded-md bg-green-600 px-6 py-2 font-semibold dark:text-white shadow-sm;
+    @apply rounded-md bg-green-600 px-6 py-2 font-semibold text-white shadow-sm;
     @apply hover:bg-green-400 focus-visible:outline focus-visible:outline-2;
     @apply focus-visible:outline-offset-2 focus-visible:outline-green-600;
 }
 
-
 .btn-warning {
-    @apply rounded-md bg-yellow-600 px-6 py-2 font-semibold dark:text-white shadow-sm;
-    @apply hover:bg-yellow-400 focus-visible:outline focus-visible:outline-2;
-    @apply focus-visible:outline-offset-2 focus-visible:outline-yellow-600;
+    @apply rounded-md bg-yellow-400 px-6 py-2 font-semibold text-white shadow-sm;
+    @apply hover:bg-yellow-300 hover:text-yellow-900 focus-visible:outline focus-visible:outline-2;
+    @apply focus-visible:outline-offset-2 focus-visible:outline-yellow-400;
+}
+
+.btn-dark {
+    @apply px-6 py-3 rounded-lg dark:text-white dark:hover:bg-gray-700 border-2 dark:border-gray-700;
+    @apply hover:bg-gray-900 hover:text-white/50 border-gray-300 text-sm;
 }
 
 
 .container {
     @apply bg-gray-100 dark:bg-gray-900 p-0 m-0;
-    @apply min-h-full min-w-full;
+    @apply min-h-full min-w-full h-screen;
 }
 
 .content {
