@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" x-data="{ darkMode: true }" x-bind:class="{'dark' : darkMode === true}"  x-init="
+if (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    localStorage.setItem('darkMode', JSON.stringify(true));
+}
+darkMode = JSON.parse(localStorage.getItem('darkMode'));
+$watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

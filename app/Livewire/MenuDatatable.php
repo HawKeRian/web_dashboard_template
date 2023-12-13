@@ -49,8 +49,7 @@ class MenuDatatable extends Component
 
     // Swith Theme
     public function switchTheme(){
-        dd("hello!");
-        $this->dispatch("swicth_theme")->self();
+        $this->dispatch("switch-theme");
     }
 
     // Render Page

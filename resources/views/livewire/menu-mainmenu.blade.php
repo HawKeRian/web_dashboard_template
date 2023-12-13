@@ -6,6 +6,8 @@
     <div class="flex-auto py-4 h-screen">
       <div class="flex justify-between items-center">
           <h3 class="text-3xl font-extrabold dark:text-white/75 uppercase">Significant Card</h3>
+
+          @include('theme_menu')
           {{-- <div class="inline-flex items-center space-x-2"> 
               <a class="bg-gray-900 text-white/50 p-2 rounded-md hover:text-white smooth-hover" href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

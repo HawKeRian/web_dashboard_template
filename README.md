@@ -15,6 +15,7 @@ Use PHP as server-side and process back-end methods.
 - Tailwind CSS.
 - CanvasJS Chart.
 - Livewire Powergrid.
+- SweetAlert2
 
 ## Contributing
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
