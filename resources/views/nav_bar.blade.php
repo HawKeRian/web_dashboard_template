@@ -23,7 +23,7 @@
             </svg>
         </a>
 
-        <a class="nav-item chart-menu smooth-hover" href="#" data-tooltip-target="chart-menu-tooltip" data-tooltip-style="light" data-tooltip-placement="right">
+        <a class="nav-item chart-menu smooth-hover" href="{{route('chart')}}" data-tooltip-target="chart-menu-tooltip" data-tooltip-style="light" data-tooltip-placement="right">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                 <path d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75
                     8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3

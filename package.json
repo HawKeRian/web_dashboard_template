@@ -15,6 +15,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@canvasjs/charts": "^3.7.32",
         "flowbite": "^2.2.0"
     }
 }

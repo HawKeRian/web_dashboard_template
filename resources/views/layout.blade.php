@@ -22,7 +22,9 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     @livewire('wire-elements-modal')
 
     @yield('content')
-    
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+
+    @stack('scripts')
 </body>
 </html>

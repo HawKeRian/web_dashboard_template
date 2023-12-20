@@ -1,5 +1,6 @@
 import './bootstrap';
 import 'flowbite';
+import CanvasJS from '@canvasjs/charts';
 
 import './../../vendor/power-components/livewire-powergrid/dist/powergrid'
  
