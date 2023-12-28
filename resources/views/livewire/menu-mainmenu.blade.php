@@ -26,7 +26,7 @@
         @foreach ($signifi_data as $item)
           <a href="#" class="signifi-item relative group dark:border-gray-900 dark:border-gray-700 border-2 border-gray-300
                               hover:smooth-hover hover:text-white/50 hover:bg-gray-700 hover:border-gray-900/80">
-            <img class="w-20 h-20 object-cover object-center rounded-full" src="{{$item['thumbnail']}}" alt="{{$item["title"]}}" />
+            <img class="h-16 w-16 xxl:h-20 xxl:w-20 object-cover object-center rounded-full" src="{{$item['thumbnail']}}" alt="{{$item["title"]}}" />
             <h5 class="dark:text-white text-xl font-bold capitalize">{{$item["title"]}}</h5>
             <p class="dark:text-white/50">Brand: {{$item["brand"]}}</p>
             <p class="dark:text-white/50">Price: ${{$item["price"]}}</p>

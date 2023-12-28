@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\archiveController;
 use App\Http\Controllers\chartController;
 use App\Http\Controllers\datatableController;
 use App\Http\Controllers\indexController;
@@ -23,6 +24,6 @@ Route::get('/mainmenu', [mainController::class, "index"])->name("mainmenu");
 Route::get('/datatable', [datatableController::class, "index"])->name('datatable');
 
 Route::get('/chart', [chartController::class, "index"])->name('chart');
-Route::get('/logging', [mainController::class, "logging"])->name('logging');
+Route::get('/logging', [archiveController::class, "index"])->name('logging');
 Route::get('/about', [mainController::class, "about"])->name('about');
 Route::get('/setting', [mainController::class, "setting"])->name('setting');
